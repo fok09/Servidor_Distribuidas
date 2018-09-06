@@ -13,8 +13,9 @@ import bean.Venta;
 import bean.VentaView;
 import bean.srv.ProductoSrv;
 import bean.srv.VentaSRV;
+import tda.TDASistemaCine;
 
-public class SistemaCine 
+public class SistemaCine implements TDASistemaCine
 {
 	private List<Entrada> entradas;
 	private List<Adicional> adicionales;
