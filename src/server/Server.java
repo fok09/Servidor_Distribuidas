@@ -22,7 +22,7 @@ TDASistemaCine objetoRemoto;
     public void iniciar() {
     	try {
     		LocateRegistry.createRegistry(1099);	
-            TDASistemaCine sistemaCine = new GestionAlumnos();
+            TDASistemaCine sistemaCine = new SistemaCine();
             Naming.rebind ("//localhost/SistemaCine", sistemaCine);
             System.out.println("Fijado en //localhost/SistemaCine");
 		} catch (Exception e) {

@@ -1,5 +1,7 @@
 package app;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -15,8 +17,12 @@ import bean.srv.ProductoSrv;
 import bean.srv.VentaSRV;
 import tda.TDASistemaCine;
 
-public class SistemaCine implements TDASistemaCine
+public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Entrada> entradas;
 	private List<Adicional> adicionales;
 	private List<ComboPromocional> combos;
@@ -25,7 +31,7 @@ public class SistemaCine implements TDASistemaCine
 	
 	private static SistemaCine instancia = null;
 	
-	private SistemaCine()
+	public SistemaCine() throws RemoteException 
 	{
 //		entradas = new ArrayList<Entrada>();
 //		adicionales = new ArrayList<Adicional>();
@@ -36,7 +42,7 @@ public class SistemaCine implements TDASistemaCine
 		ventas = new ArrayList<Venta>();
 	}
 	
-	public static SistemaCine getInstance()
+	public static SistemaCine getInstance() throws RemoteException
 	{
 		if(instancia == null) 
 		{
