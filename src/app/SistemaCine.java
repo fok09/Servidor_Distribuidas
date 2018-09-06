@@ -19,9 +19,6 @@ import tda.TDASistemaCine;
 
 public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private List<Entrada> entradas;
 	private List<Adicional> adicionales;
@@ -33,15 +30,11 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	
 	public SistemaCine() throws RemoteException 
 	{
-//		entradas = new ArrayList<Entrada>();
-//		adicionales = new ArrayList<Adicional>();
-//		combos = new ArrayList<ComboPromocional>();
 		entradas = ProductoSrv.leerEntradas();
 		adicionales = ProductoSrv.leerAdicional();
 		combos = ProductoSrv.leerCombos();
 		ventas = new ArrayList<Venta>();
 	}
-	
 	
 	/*
 	public static SistemaCine getInstance() throws RemoteException
@@ -81,7 +74,6 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 		ventas.add(ventaActual);
 		VentaSRV.grabarVenta(ventaActual);
 		return ventaActual.getTotal();
-		//aca va la bajada a base de datos
 	}
 	
 	private Producto buscarProducto(int codigo)
@@ -101,7 +93,6 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	public Vector<ProductoView> getEntradas()
 	{
 		Vector<ProductoView> ent = new Vector<ProductoView>();
-//		entradas = ProductoSrv.leerEntradas();
 		for(Producto p : entradas)
 			ent.add(p.getView());
 		return ent;
@@ -110,7 +101,6 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	public Vector<ProductoView> getAdicionales()
 	{
 		Vector<ProductoView> ad = new Vector<ProductoView>();
-//		adicionales = ProductoSrv.leerAdicional();
 		for(Producto p : adicionales)
 			ad.add(p.getView());
 		return ad;
@@ -127,7 +117,6 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	public Vector<ProductoView> getCombos()
 	{
 		Vector<ProductoView> co = new Vector<ProductoView>();
-//		combos = ProductoSrv.leerCombos();
 		for(Producto p : combos)
 			co.add(p.getView());
 		return co;
@@ -190,32 +179,4 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 				return combs.elementAt(i);
 		return null;		
 	}
-
-	
-	private void test()
-	{
-		//entradas
-		Entrada ent1 = new Entrada("Duro de matar","sala1","22:00",(float)20);
-		Entrada ent2 = new Entrada("Jurassic Park","sala 2","19:30",(float)20);
-		Entrada ent3 = new Entrada("Pulp Fiction","sala 3","20:40",(float)20);
-		Entrada ent4 = new Entrada("North by Northwest","sala 4","17:10",(float)20);
-		entradas.add(ent1);
-		entradas.add(ent2);
-		entradas.add(ent3);
-		entradas.add(ent4);
-		//adicionales
-		Adicional ad1 = new Adicional("pochoclo",(float)80,"comida");
-		adicionales.add(ad1);
-
-		Adicional ad2 = new Adicional("coca",(float)40,"bebida");
-		adicionales.add(ad2);
-		
-		//combos
-		ArrayList<Producto> pc = new ArrayList<Producto>();
-		pc.add(ad1);
-		pc.add(ad2);
-		ComboPromocional com1 = new ComboPromocional((float)20,"coca+pochoclo",pc);
-		combos.add(com1);
-	}
-
 }

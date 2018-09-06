@@ -24,10 +24,7 @@ public class cargaDatos {
 		// TODO Auto-generated method stub
 		SessionFactory sf = null;
 		sf = HibernateUtil.getSessionFactory();
-		ArrayList<Producto> productos = new ArrayList<Producto>();
-		
-		
-	
+		ArrayList<Producto> productos = new ArrayList<Producto>();	
 		Entrada e = new Entrada("Star Wars", "Sala 2", "16:15", 120);
 		productos.add(e);
 		Entrada e2 = new Entrada("Barney", "Sala 3", "18:15", 167);
