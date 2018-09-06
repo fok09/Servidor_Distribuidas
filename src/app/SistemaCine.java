@@ -148,17 +148,18 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 		return vent;
 	}
 	
-	public Vector<Vector<String>> getListadoProductos() {
+	public Vector<Vector<String>> getListadoProductos() 
+	{
 		Vector<Vector<String>> prods = new Vector<Vector<String>>();
 		Vector<ProductoView> ve = getEntradas();
 		Vector<ProductoView> va = getAdicionales();
 		Vector<ProductoView> vc = getCombos();
 		Vector<String> strs = new Vector<String>();
-		for(ProductoView pv : ve)
+		for(int i = 0; i < ve.size(); i++ )
 		{
-			strs.add(String.valueOf(pv.getCodigo()));
-			strs.add(pv.getNombre());
-			strs.add(String.valueOf(pv.getPrecio()));
+			strs.add(String.valueOf(ve.elementAt(i).getCodigo()));
+			strs.add(ve.elementAt(i).getNombre());
+			strs.add(String.valueOf(ve.elementAt(i).getPrecio()));
 			prods.add(strs);
 		}
 		for(ProductoView pv : va)
