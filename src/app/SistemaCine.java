@@ -29,7 +29,7 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	private List<Venta> ventas;
 	private Venta ventaActual;
 	
-	private static SistemaCine instancia = null;
+	//private static SistemaCine instancia = null;
 	
 	public SistemaCine() throws RemoteException 
 	{
@@ -42,6 +42,8 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 		ventas = new ArrayList<Venta>();
 	}
 	
+	
+	/*
 	public static SistemaCine getInstance() throws RemoteException
 	{
 		if(instancia == null) 
@@ -50,6 +52,7 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	    }
 		return instancia;
 	}
+	*/
 	
 	public VentaView iniciarVenta()
 	{
