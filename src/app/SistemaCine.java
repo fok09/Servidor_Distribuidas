@@ -151,29 +151,14 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 	public Vector<Vector<String>> getListadoProductos() 
 	{
 		Vector<Vector<String>> prods = new Vector<Vector<String>>();
-		Vector<ProductoView> ve = getEntradas();
-		Vector<ProductoView> va = getAdicionales();
-		Vector<ProductoView> vc = getCombos();
-		Vector<String> strs = new Vector<String>();
-		for(int i = 0; i < ve.size(); i++ )
+		List<Producto> ps = ProductoSrv.leerProductos();
+		
+		for(Producto p : ps)
 		{
-			strs.add(String.valueOf(ve.elementAt(i).getCodigo()));
-			strs.add(ve.elementAt(i).getNombre());
-			strs.add(String.valueOf(ve.elementAt(i).getPrecio()));
-			prods.add(strs);
-		}
-		for(ProductoView pv : va)
-		{
-			strs.add(String.valueOf(pv.getCodigo()));
-			strs.add(pv.getNombre());
-			strs.add(String.valueOf(pv.getPrecio()));
-			prods.add(strs);
-		}
-		for(ProductoView pv : vc)
-		{
-			strs.add(String.valueOf(pv.getCodigo()));
-			strs.add(pv.getNombre());
-			strs.add(String.valueOf(pv.getPrecio()));
+			Vector<String> strs = new Vector<String>();
+			strs.add(String.valueOf(p.getView().getCodigo()));
+			strs.add(p.getNombre());
+			strs.add(String.valueOf(p.getPrecio()));
 			prods.add(strs);
 		}
 		return prods;
