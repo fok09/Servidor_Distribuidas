@@ -148,6 +148,21 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 		return vent;
 	}
 	
+	public Vector<Vector<String>> getListadoProductos() {
+		Vector<Vector<String>> prods = new Vector<Vector<String>>();
+		List<Producto> ps = ProductoSrv.leerProductos();
+		for(Producto p : ps)
+		{
+			ProductoView pv = p.getView();
+			Vector<String> strs = new Vector<String>();
+			strs.add(String.valueOf(pv.getCodigo()));
+			strs.add(pv.getNombre());
+			strs.add(String.valueOf(pv.getPrecio()));
+			prods.add(strs);
+		}
+		return prods;
+	}
+	
 	public ProductoView buscarEntrada(String nombre)
 	{
 		Vector<ProductoView> ents = getEntradas();
@@ -201,4 +216,5 @@ public class SistemaCine extends UnicastRemoteObject implements TDASistemaCine
 		ComboPromocional com1 = new ComboPromocional((float)20,"coca+pochoclo",pc);
 		combos.add(com1);
 	}
+
 }
